@@ -1,21 +1,22 @@
 function twoCrystalBalls(array: boolean[]) {
-    const jmpSize = Math.floor(Math.sqrt(array.length));
-
+    const jmpSize = Math.floor(Math.sqrt(array.length)); // Tbn se fracciona el array en fragmentos de raíz de n. Por ejm raiz de 100 es 10
+    console.log(`jmpSize = ${jmpSize}`)
     let i = jmpSize
-    for (; i < array.length; i += jmpSize) {
-        if (array[i]) {
+    for (; i < array.length; i += jmpSize) { //Tbn Recorre el array avanzando tramos de raíz de n
+        console.log(`i = ${i}`)
+        if (array[i]) { //Tbn El array tiene todo True a partir de cierto valor, si se encuentra uno, se rompe
             break
         }
     }
 
-    i -= jmpSize
-    for (let j = 0; j < jmpSize && i < array.length; j++, i++) {
+    i -= jmpSize //Tbn Como ya encontró el True, entonces se debe devolver al salto anterior para recorrer lineal desde ahí
+    for (let j = 0; j < jmpSize && i < array.length; j++, i++) { //Tbn Acá se recorre lineal máximo el tamaño del jmpSize y mínimo hasta encontrar el fin del array (cuando aplique)
         if (array[i]) {
-            return i
+            return i    // Si encuentra el primer True, retorna su posición
         }
     }
 
-    return -1
+    return -1   //Tbn si no retorna, entrega -1
 }
 
 // function twoCrystalBalls(breaks) {
@@ -37,7 +38,7 @@ function twoCrystalBalls(array: boolean[]) {
 //     return -1;
 // }
 
-export function run() {
+export function run() {         //Tbn Estos ejemplos no están bien del todo, porque no rellenan de True hasta el final
     const a = Array(105).fill(false)
     a[103] = true
     console.log(twoCrystalBalls(a))
