@@ -4,18 +4,19 @@ function binarySearch(array: number[], value: number) {
     let count = 0
 
     do {
-        const m = Math.floor(lo + (hi - lo) / 2)
-        const v = array[m]
+        const m = Math.floor(lo + (hi - lo) / 2) //Tbn Entero inferior de la mitad del rango, desplazado por lo
+        const v = array[m] //Tbn La mitad del array
 
-        if (v === value) {
+        if (v === value) { //Tbn Caso donde se encuentra el valor
             return true
-        } else if (v > value) {
-            hi = m
-        } else {
-            lo = m + 1
+        } else if (v > value) { //Tbn Caso donde el rango es mayor que el valor
+            hi = m  // Tbn Se configura la mitad anterior como el high para restringir el rango
+        } else {    // Tbn Caso donde aún no se encuentra el valor
+            lo = m + 1 //Tbn se configura el low como el valor después de la mitad anterior
         }
         count += 1
-    } while (lo < hi)
+        console.log(count)
+    } while (lo < hi) //Tbn Se repite hasta que haya return true o cuando el low llegue al high anterior
 
     return false
 }
