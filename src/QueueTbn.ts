@@ -1,17 +1,17 @@
-class QueueNode {     //Se crea esta clase para poder crear el tipo de dato Node para almacenar los nodos
-    value: number
-    next: QueueNode | null
+class QueueNode2<T> {     //Se crea esta clase para poder crear el tipo de dato Node para almacenar los nodos
+    value: T
+    next: QueueNode2<T> | null
 
-    constructor(value: number){ //El next siempre va a ser nulo, mejor se define adentro
+    constructor(value: T){ //El next siempre va a ser nulo, mejor se define adentro
         this.value = value
         this.next = null
     }
 }
 
 
-class Queue {           //Esta sería directamente la clase para crear la cola
-    head: Node | null
-    tail: Node | null
+class Queue2<T> {           //Esta sería directamente la clase para crear la cola
+    head: QueueNode2<T> | null
+    tail: QueueNode2<T> | null
     length: number
 
     constructor() {            //El constructor inicializa las variables en este caso en null y 0
@@ -20,7 +20,7 @@ class Queue {           //Esta sería directamente la clase para crear la cola
         this.length = 0
     }
 
-    enqueue(node: QueueNode): void{ //Este método es para encolar, recibe un nodo, pero no retorna nada.
+    enqueue(node: QueueNode2<T>): void{ //Este método es para encolar, recibe un nodo, pero no retorna nada.
         if(!this.tail) {
             this.tail = node
             this.head = node
@@ -28,9 +28,10 @@ class Queue {           //Esta sería directamente la clase para crear la cola
             this.tail.next = node
             this.tail = node
         }
-        this.lenght += 1
+        this.length += 1
+    }
 
-    dequeue(): QueueNode | null{   //Acá se desencola, no se recibe nada porque la cabeza ya existe, retorna Nodo que
+    dequeu(): QueueNode<T> | null{   //Acá se desencola, no se recibe nada porque la cabeza ya existe, retorna Nodo que
         if (!this.head){
             return null
         }
@@ -45,6 +46,5 @@ class Queue {           //Esta sería directamente la clase para crear la cola
         head.next = null //Esto borra la referencia del next del head anterior
         this.length -= 1
         return head
-    }
     }
 }
